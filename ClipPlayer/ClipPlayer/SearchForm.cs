@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace WindowsApplication1
 {
@@ -22,28 +23,34 @@ namespace WindowsApplication1
 
             foundDropsList.Items.Clear();
 
-            foreach (Control con in this.MdiParent.MdiChildren)
+            var p = from m in this.MdiParent.MdiChildren
+                    where m is SoundDropList 
+                    select m;
+
+            foreach (SoundDropList sdl in p)
             {
-                if (con.GetType() == typeof(SoundDropList))
+                var drops = from h in sdl.listView1.Items.OfType<ListViewItem>()
+                            where h.Tag is SoundDrop 
+                                && (((SoundDrop)h.Tag).FileNameOnly.ToLower().Contains(searchBox.Text.ToLower())
+                                || (((SoundDrop)h.Tag).Tags != null && ((SoundDrop)h.Tag).Tags.ToLower().Contains(searchBox.Text.ToLower())))
+                            select h;
+
+                foreach (ListViewItem lvi in drops)
                 {
-                    SoundDropList sdl = (SoundDropList)con;
-                    foreach (ListViewItem lvi in sdl.listView1.Items)
-                    {
-                        SoundDrop drop = (SoundDrop)lvi.Tag;
-                        if (drop.FileNameOnly.ToLower().Contains(searchBox.Text.ToLower()) ||
-                            (drop.Tags != null && drop.Tags.Contains(searchBox.Text.ToLower())))
-                        {
-                            ListViewItem newItem = new ListViewItem(drop.DropID.ToString()); //(ListViewItem)lvi.Clone();
-                            newItem.Tag = lvi.Tag;
+                    SoundDrop drop = lvi.Tag as SoundDrop;
 
-                            newItem.SubItems.Add(drop.FileNameOnly);
-                            newItem.SubItems.Add(drop.LengthString);
-                            newItem.SubItems.Add(sdl.Text);
-                            newItem.SubItems.Add(drop.Tags);
+                    if (drop == null)
+                        continue;
 
-                            foundDropsList.Items.Add(newItem);
-                        }
-                    }
+                    ListViewItem newItem = new ListViewItem(drop.DropID.ToString());
+                    newItem.Tag = lvi.Tag;
+
+                    newItem.SubItems.Add(drop.FileNameOnly);
+                    newItem.SubItems.Add(drop.LengthString);
+                    newItem.SubItems.Add(sdl.Text);
+                    newItem.SubItems.Add(drop.Tags);
+
+                    foundDropsList.Items.Add(newItem);
                 }
             }
         }
@@ -68,6 +75,7 @@ namespace WindowsApplication1
         {
             if (e.KeyCode == Keys.F5)
             {
+                e.Handled = true;
                 foreach (ListViewItem lvi in foundDropsList.Items)
                 {
                     SoundDrop drop = (SoundDrop)lvi.Tag;
@@ -76,11 +84,12 @@ namespace WindowsApplication1
             }
             else if (e.KeyCode == Keys.Enter)
             {
-
+                e.Handled = true;
                 DoPlay();
             }
             else if (e.KeyCode == Keys.Escape)
             {
+                e.Handled = true;
                 Close();
             }
 
