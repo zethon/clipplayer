@@ -428,32 +428,6 @@ namespace WindowsApplication1
             //}
         }
 
-        #region junk
-        private void searchBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
-        private void searchBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void menuStrip_Resize(object sender, EventArgs e)
-        {
-        }
-
-        private void MDIParent1_ResizeEnd(object sender, EventArgs e)
-        {
-        }
-
-        private void foundDropsList_DoubleClick(object sender, EventArgs e)
-        {
-          
-        }
-
-
-        #endregion
 
         private void printPreviewToolStripButton_Click(object sender, EventArgs e)
         {

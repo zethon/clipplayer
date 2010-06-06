@@ -96,7 +96,6 @@ namespace WindowsApplication1
             this.menuStrip.Size = new System.Drawing.Size(768, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
-            this.menuStrip.Resize += new System.EventHandler(this.menuStrip_Resize);
             // 
             // fileMenu
             // 
@@ -497,7 +496,6 @@ namespace WindowsApplication1
             this.Text = "Simple SoundBoard v1.0";
             this.Activated += new System.EventHandler(this.MDIParent1_Activated);
             this.Load += new System.EventHandler(this.MDIParent1_Load);
-            this.ResizeEnd += new System.EventHandler(this.MDIParent1_ResizeEnd);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MDIParent1_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MDIParent1_DragEnter);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MDIParent1_KeyDown);
