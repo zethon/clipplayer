@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="ClipDB" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="Clip" Member="Clips">
+    <Type Name="Clip">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Filename" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Column Name="Volume" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Tags" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Column Name="LastPlayed" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PlayCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ListID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="List" Member="Lists">
+    <Type Name="List">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
