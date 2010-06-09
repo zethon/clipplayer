@@ -53,6 +53,7 @@ namespace WindowsApplication1
             this.statusBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.findSoundClipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.newWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,7 +77,6 @@ namespace WindowsApplication1
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.findSoundClipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -261,14 +261,14 @@ namespace WindowsApplication1
             this.toolBarToolStripMenuItem.CheckOnClick = true;
             this.toolBarToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.toolBarToolStripMenuItem.Name = "toolBarToolStripMenuItem";
-            this.toolBarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.toolBarToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.toolBarToolStripMenuItem.Text = "&Toolbar";
             this.toolBarToolStripMenuItem.Click += new System.EventHandler(this.ToolBarToolStripMenuItem_Click);
             // 
             // statusBarToolStripMenuItem
             // 
             this.statusBarToolStripMenuItem.Name = "statusBarToolStripMenuItem";
-            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             // 
             // toolsMenu
             // 
@@ -284,6 +284,14 @@ namespace WindowsApplication1
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
             this.optionsToolStripMenuItem.Text = "&Options";
+            // 
+            // findSoundClipToolStripMenuItem
+            // 
+            this.findSoundClipToolStripMenuItem.Name = "findSoundClipToolStripMenuItem";
+            this.findSoundClipToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
+            this.findSoundClipToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.findSoundClipToolStripMenuItem.Text = "&Find Sound Clip";
+            this.findSoundClipToolStripMenuItem.Click += new System.EventHandler(this.findSoundClipToolStripMenuItem_Click);
             // 
             // windowsMenu
             // 
@@ -446,7 +454,8 @@ namespace WindowsApplication1
             this.printToolStripButton.ImageTransparentColor = System.Drawing.Color.Black;
             this.printToolStripButton.Name = "printToolStripButton";
             this.printToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.printToolStripButton.Text = "Print";
+            this.printToolStripButton.Text = "New Sound List";
+            this.printToolStripButton.Click += new System.EventHandler(this.printToolStripButton_Click);
             // 
             // printPreviewToolStripButton
             // 
@@ -471,14 +480,6 @@ namespace WindowsApplication1
             this.helpToolStripButton.Name = "helpToolStripButton";
             this.helpToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.helpToolStripButton.Text = "Help";
-            // 
-            // findSoundClipToolStripMenuItem
-            // 
-            this.findSoundClipToolStripMenuItem.Name = "findSoundClipToolStripMenuItem";
-            this.findSoundClipToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-            this.findSoundClipToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-            this.findSoundClipToolStripMenuItem.Text = "&Find Sound Clip";
-            this.findSoundClipToolStripMenuItem.Click += new System.EventHandler(this.findSoundClipToolStripMenuItem_Click);
             // 
             // MDIParent1
             // 

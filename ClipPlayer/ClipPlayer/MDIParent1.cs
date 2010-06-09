@@ -64,13 +64,7 @@ namespace WindowsApplication1
 
         private void ShowNewForm(object sender, EventArgs e)
         {
-            // Create a new instance of the child form.
-            SoundDropList childForm = new SoundDropList(_system);
 
-            // Make it a child of this MDI form before showing it.
-            childForm.MdiParent = this;
-            childForm.Text = "Untitled Soundlist";
-            childForm.Show();
         }
 
         private void OpenFile(object sender, EventArgs e)
@@ -91,6 +85,7 @@ namespace WindowsApplication1
                 {
                     SoundDropList form = new SoundDropList(_system);
                     form.MdiParent = this;
+                    form.Dirty = false;
                     form.Text = list.Name;
 
                     var p = from b in db.Clips
@@ -528,6 +523,17 @@ namespace WindowsApplication1
             searchFrm.MdiParent = this;
             searchFrm.Text = "Search";
             searchFrm.Show();
+        }
+
+        private void printToolStripButton_Click(object sender, EventArgs e)
+        {
+            // Create a new instance of the child form.
+            SoundDropList childForm = new SoundDropList(_system);
+
+            // Make it a child of this MDI form before showing it.
+            childForm.MdiParent = this;
+            childForm.Text = "Untitled Soundlist";
+            childForm.Show();
         }
     }
 }

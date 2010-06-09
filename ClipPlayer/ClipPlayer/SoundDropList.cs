@@ -12,6 +12,25 @@ namespace WindowsApplication1
 {
     public partial class SoundDropList : Form
     {
+        public bool Dirty = true;
+
+        private string _text;
+        public override string Text
+        {
+            get
+            {
+                return base.Text;
+            }
+
+            set
+            {
+                if (Dirty)
+                    base.Text = value + "*";
+                else
+                    base.Text = value;
+            }
+        }
+
         private FMOD.System _system = null;
         private ListViewColumnSorter lvwColumnSorter;
 
