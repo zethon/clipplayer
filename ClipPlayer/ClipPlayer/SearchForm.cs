@@ -29,11 +29,20 @@ namespace ClipPlayer
 
             foreach (SoundDropList sdl in p)
             {
-                var drops = from h in sdl.listView1.Items.OfType<ListViewItem>()
-                            where h.Tag is SoundDrop 
-                                && (((SoundDrop)h.Tag).FileNameOnly.ToLower().Contains(searchBox.Text.ToLower())
-                                || (((SoundDrop)h.Tag).Tags != null && ((SoundDrop)h.Tag).Tags.ToLower().Contains(searchBox.Text.ToLower())))
-                            select h;
+                IEnumerable<ListViewItem> drops;
+
+                if (sdl.Text.ToLower().Contains(searchBox.Text.ToLower()))
+                {
+                    drops = sdl.listView1.Items.OfType<ListViewItem>();
+                }
+                else
+                {
+                    drops = from h in sdl.listView1.Items.OfType<ListViewItem>()
+                           where h.Tag is SoundDrop
+                               && (((SoundDrop)h.Tag).FileNameOnly.ToLower().Contains(searchBox.Text.ToLower())
+                               || (((SoundDrop)h.Tag).Tags != null && ((SoundDrop)h.Tag).Tags.ToLower().Contains(searchBox.Text.ToLower())))
+                           select h;
+                }
 
                 foreach (ListViewItem lvi in drops)
                 {
