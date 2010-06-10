@@ -10,7 +10,7 @@ using System.Data.Common;
 using System.Collections;
 using System.Windows.Forms;
 
-namespace WindowsApplication1
+namespace ClipPlayer
 {
     public struct SoundListStruct
     {

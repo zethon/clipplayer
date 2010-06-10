@@ -1,4 +1,4 @@
-namespace WindowsApplication1
+namespace ClipPlayer
 {
     partial class MDIParent1
     {
@@ -494,7 +494,7 @@ namespace WindowsApplication1
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MDIParent1";
-            this.Text = "Simple SoundBoard v1.0";
+            this.Text = "ClipPlayer";
             this.Activated += new System.EventHandler(this.MDIParent1_Activated);
             this.Load += new System.EventHandler(this.MDIParent1_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MDIParent1_DragDrop);

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.Collections;
 
 
-namespace WindowsApplication1
+namespace ClipPlayer
 {
     public partial class SoundDropList : Form
     {

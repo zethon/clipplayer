@@ -1,4 +1,4 @@
-namespace WindowsApplication1
+namespace ClipPlayer
 {
     partial class SoundDropList
     {

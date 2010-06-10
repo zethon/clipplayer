@@ -4,7 +4,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace WindowsApplication1
+namespace ClipPlayer
 {
 
 	#region InputBox return result

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 //using EConTech.Windows.MACUI;
 
-namespace WindowsApplication1
+namespace ClipPlayer
 {
     public partial class PlayBox : Form
     {
@@ -21,7 +21,7 @@ namespace WindowsApplication1
         private Timer _playTimer = new Timer();
         
         private SoundDrop _soundDrop = null;
-        public WindowsApplication1.SoundDrop Drop
+        public ClipPlayer.SoundDrop Drop
         {
             get { return _soundDrop; }
             set { _soundDrop = value; }

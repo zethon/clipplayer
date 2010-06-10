@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WindowsApplication1
+namespace ClipPlayer
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;

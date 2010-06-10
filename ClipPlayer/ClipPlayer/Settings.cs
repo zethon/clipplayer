@@ -1,4 +1,4 @@
-namespace WindowsApplication1.Properties {
+namespace ClipPlayer.Properties {
     
     
     // This class allows you to handle specific events on the settings class:

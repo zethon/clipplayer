@@ -9,7 +9,7 @@ using System.Collections;
 using System.Linq;
 using System.IO;
 
-namespace WindowsApplication1
+namespace ClipPlayer
 {
     public partial class MDIParent1 : Form
     {

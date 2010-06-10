@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 
 
-namespace WindowsApplication1
+namespace ClipPlayer
 {
     public partial class DropPropertiesForm : Form
     {

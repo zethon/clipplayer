@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Linq;
 
-namespace WindowsApplication1
+namespace ClipPlayer
 {
     public partial class SearchForm : Form
     {
