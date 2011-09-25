@@ -8,6 +8,7 @@
       <Column Name="LastPlayed" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="PlayCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ListID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Member="Shortcut" Type="System.String" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="List" Member="Lists">

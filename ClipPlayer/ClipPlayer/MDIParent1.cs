@@ -98,14 +98,15 @@ namespace ClipPlayer
                         sd.DropID = clip.ID;
                         sd.Volume = float.Parse(clip.Volume.ToString());
                         sd.Tags = clip.Tags;
+                        sd.ShortCutKey = clip.Shortcut;
 
                         ListViewItem li = new ListViewItem(clip.ID.ToString());
-                        li.ToolTipText = clip.Filename;
-                        li.Tag = sd;
-
                         li.SubItems.Add(sd.FileNameOnly);
+                        li.SubItems.Add(sd.ShortCutKey);
                         li.SubItems.Add(sd.LengthString);
                         li.SubItems.Add(sd.Tags);
+                        li.ToolTipText = clip.Filename;
+                        li.Tag = sd;
 
                         form.listView1.Items.Add(li);
 
@@ -124,57 +125,67 @@ namespace ClipPlayer
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            saveFileDialog.Filter = "SoundBoard Files (*.sbd)|*.sbd|All Files (*.*)|*.*";
-
-            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+            try
             {
-                Cursor.Current = Cursors.WaitCursor;
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                saveFileDialog.Filter = "SoundBoard Files (*.sbd)|*.sbd|All Files (*.*)|*.*";
 
-                if (File.Exists(saveFileDialog.FileName))
+                if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
                 {
-                    File.Delete(saveFileDialog.FileName);
-                }
-                
-                string strConStr = string.Format("Data Source={0}",saveFileDialog.FileName);
-                IDbConnection conn = new System.Data.SqlServerCe.SqlCeConnection(strConStr);
-                ClipDB newDB = new ClipDB(conn);
-                
-                newDB.CreateDatabase();
+                    Cursor.Current = Cursors.WaitCursor;
 
-                foreach (Control ctrl in MdiChildren)
-                {
-                    if (ctrl.GetType() != typeof(SoundDropList))
-                        continue;
-
-                    SoundDropList sdl = ctrl as SoundDropList;
-                    
-                    List newList = new List();
-                    newList.Name = sdl.Text;
-                    newDB.Lists.InsertOnSubmit(newList);
-                    newDB.SubmitChanges();
-
-                    foreach (ListViewItem lvi in sdl.listView1.Items)
+                    if (File.Exists(saveFileDialog.FileName))
                     {
-                        SoundDrop sd = lvi.Tag as SoundDrop;
-                        
-                        if (sd == null)
+                        File.Delete(saveFileDialog.FileName);
+                    }
+
+                    string strConStr = string.Format("Data Source={0}", saveFileDialog.FileName);
+                    IDbConnection conn = new System.Data.SqlServerCe.SqlCeConnection(strConStr);
+                    ClipDB newDB = new ClipDB(conn);
+
+                    newDB.CreateDatabase();
+
+                    foreach (Control ctrl in MdiChildren)
+                    {
+                        if (ctrl.GetType() != typeof(SoundDropList))
                             continue;
 
-                        Clip clip = new Clip();
-                        clip.Filename = sd.FileName;
-                        clip.Tags = sd.Tags;
-                        clip.Volume = sd.Volume;
-                        clip.ListID = newList.ID;
+                        SoundDropList sdl = ctrl as SoundDropList;
 
-                        newDB.Clips.InsertOnSubmit(clip);
+                        List newList = new List();
+                        newList.Name = sdl.Text;
+                        newDB.Lists.InsertOnSubmit(newList);
                         newDB.SubmitChanges();
 
-                        lvi.Text = clip.ID.ToString();
+                        foreach (ListViewItem lvi in sdl.listView1.Items)
+                        {
+                            SoundDrop sd = lvi.Tag as SoundDrop;
+
+                            if (sd == null)
+                                continue;
+
+                            Clip clip = new Clip();
+                            clip.Filename = sd.FileName;
+                            clip.Tags = sd.Tags;
+                            clip.Volume = sd.Volume;
+                            clip.ListID = newList.ID;
+                            clip.Shortcut = sd.ShortCutKey;
+
+                            newDB.Clips.InsertOnSubmit(clip);
+                            newDB.SubmitChanges();
+
+                            lvi.Text = clip.ID.ToString();
+                        }
                     }
                 }
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception: " + ex.Message);
+            }
+            finally
+            {
                 Cursor.Current = Cursors.Default;
             }
         }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClipPlayer", "ClipPlayer.csproj", "{3D75BE6A-C9BA-464D-80BF-14685A4FE70E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClipPlayer", "ClipPlayer\ClipPlayer.csproj", "{3D75BE6A-C9BA-464D-80BF-14685A4FE70E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -212,5 +212,11 @@ namespace ClipPlayer
             if (colorDialog1.ShowDialog() == DialogResult.OK)
                 this.BackColor = colorDialog1.Color;
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+
+        }
     }
 }

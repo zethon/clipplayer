@@ -105,7 +105,7 @@ namespace ClipPlayer
             get { return _volume; }
         }
 
-
+        public string Shortcut;
         
         private bool _ispaused = false;
         public bool IsPaused
